@@ -115,7 +115,7 @@ function drawShip(){
  * bullet is currently being fired.
  */
 function keyPressed(){
-  if(keyCode =="32" /*step #2 part3;stuck past the &&*/){
+  if(keyCode === 32 && !shipShooting){
     bulletX = shipX;
     bulletY = shipY;
     shipShooting = true;
@@ -131,13 +131,12 @@ function keyPressed(){
  */
 function drawBullet(){
   if(bulletY > 0){
-  fill("#ffff00");
-  ellipse(bulletX, bulletY, bulletDiameter, bulletDiameter);
-  //snip
-  bulletY -=10;
-}else{
-  shipShooting == false;
-}
+    fill("#ffff00");
+    ellipse(bulletX, bulletY, bulletDiameter, bulletDiameter);
+    bulletY -=10;
+  }else{
+    shipShooting = false;
+  }
 }
 
 /*
@@ -147,7 +146,7 @@ function drawBullet(){
  */
 function drawAlien(){
   alienX += alienVelocity
-  if(alienX>= canvas + alienDiameter){
+  if(alienX >= canvas + alienDiameter){
   // stopped at here and at part 4 step 3 on the guide(remember keypressed)
   }
   fill(alienColor);
